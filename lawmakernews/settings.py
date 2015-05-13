@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'djcelery',
+
     'lawmakers',
     'articles',
 )
@@ -109,3 +111,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Rabbit MQ(message broker) url
+
+BROKER_URL = 'amqp://userid:password@localhost:5672'
+
+
+# Celery tasks file
+
+CELERY_IMPORTS = ('ggg.tasks', )
