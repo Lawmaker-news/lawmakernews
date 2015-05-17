@@ -2,15 +2,11 @@
 from __future__ import unicode_literals
 from __future__ import absolute_import
 from celery import shared_task
+import requests
 
 @shared_task
-def add(x, y):
-    return x + y
+def crawl_all_lamakers():
+    pass
 
-@shared_task
-def mul(x, y):
-    return x * y
-
-@shared_task
-def xsum(numbers):
-    return sum(numbers)
+def crawl_each_lawmaker():
+    pass

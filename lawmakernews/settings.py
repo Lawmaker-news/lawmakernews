@@ -115,9 +115,4 @@ STATIC_URL = '/static/'
 
 # Rabbit MQ(message broker) url
 
-BROKER_URL = 'amqp://userid:password@localhost:5672'
-
-
-# Celery tasks file
-
-CELERY_IMPORTS = ('ggg.tasks', )
+BROKER_URL = 'redis://localhost:6379/0/'
