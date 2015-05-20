@@ -15,14 +15,15 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include, patterns, url
 from django.contrib import admin
 
 lawmaekers_urls = patterns(
-    url(r'^test_crawl_lawmakers/$', 'lawmakers.views.test_crawl_lawmakers', name='test_crawl_lawmakers')
+    '',
+    url(r'^test_crawl_lawmakers/$', 'lawmakers.views.test_crawl_lawmakers', name='test_crawl_lawmakers'),
 )
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^lawmakers/', include(lawmaekers_urls, namespace='lawmakers'))
+    url(r'^lawmakers/', include(lawmaekers_urls, namespace='lawmakers')),
 ]

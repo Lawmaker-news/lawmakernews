@@ -40,8 +40,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'djcelery',
-
     'lawmakers',
     'articles',
 )
@@ -62,7 +60,7 @@ ROOT_URLCONF = 'lawmakernews.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [ os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,6 +111,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-# Rabbit MQ(message broker) url
+# Redis(message broker) url
 
-BROKER_URL = 'redis://localhost:6379/0/'
+BROKER_URL = 'redis://localhost:6379/0'
