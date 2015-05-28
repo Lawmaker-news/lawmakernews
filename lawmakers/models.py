@@ -17,3 +17,11 @@ class Party(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def get_party_by_name(cls, name):
+        query_set = cls.objects.filter(name=name)
+        if query_set.exists():
+            return query_set.first()
+        else:
+            return cls.objects.filter(name='기타').first()
