@@ -13,9 +13,9 @@ def crawl_all_lawmakers():
     table = BeautifulSoup(response.text).find(width=550)
 
     for a_tag in table.find_all('a'):
-        crawl_each_lawmaker('http://www.rokps.or.kr/' + a_tag['href'])
+        _crawl_each_lawmaker('http://www.rokps.or.kr/' + a_tag['href'])
 
-def crawl_each_lawmaker(url):
+def _crawl_each_lawmaker(url):
     response = requests.get(url)
     table = BeautifulSoup(response.text).find(valign='top', align='left')
     captures = re.search('성 명.{,20}>([가-힣]+).*제(19)대[[가-힣\s]*\((.{,20})\)([가-힣.ㆍ\s]+)', unicode(table), re.DOTALL)
@@ -25,5 +25,11 @@ def crawl_each_lawmaker(url):
     party = Party.get_party_by_name(re.sub('[^가-힣]', '', captures2[-1]))
     local = re.sub('[^가-힣]', '', captures.group(3))
     generation = captures.group(2)
+
+    print name
+    print party.name
+    print local
+    print generation
+    print '-' * 30
 
     Lawmaker(name=name, party=party, local=local, generation=generation, is_current=True).save()
