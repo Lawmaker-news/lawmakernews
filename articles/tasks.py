@@ -10,7 +10,7 @@ def crawl_all_articles():
     lawmakers = Lawmaker.objects.all();
     
     for lawmaker in lawmakers:
-        _crawl_articles_for(lawmaker)
+        _crawl_articles_for(lawmaker.name)
 
-def _crawl_articles_for(lawmaker):
+def _crawl_articles_for(name):
     pass
