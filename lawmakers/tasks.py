@@ -26,10 +26,10 @@ def _crawl_each_lawmaker(url):
     local = re.sub('[^가-힣]', '', captures.group(3))
     generation = captures.group(2)
 
-    print name
-    print party.name
-    print local
-    print generation
-    print '-' * 30
+    print(name)
+    print(party.name)
+    print(local)
+    print(generation)
+    print('-' * 30)
 
     Lawmaker(name=name, party=party, local=local, generation=generation, is_current=True).save()

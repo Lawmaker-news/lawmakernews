@@ -19,11 +19,17 @@ from django.conf.urls import include, patterns, url
 from django.contrib import admin
 
 lawmaekers_urls = patterns(
-    '',
-    url(r'^test_crawl_lawmakers/$', 'lawmakers.views.test_crawl_lawmakers', name='test_crawl_lawmakers'),
+    'lawmakers.views',
+    url(r'^test_crawl_lawmakers/$', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
+)
+
+articles_urls = patterns(
+    'articles.views',
+    url(r'^test_crawl_articles/$', 'test_crawl_articles', name='test_crawl_articles'),
 )
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^lawmakers/', include(lawmaekers_urls, namespace='lawmakers')),
+    url(r'^articles/', include(articles_urls, namespace='articles')),
 ]
