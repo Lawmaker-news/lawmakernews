@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 from __future__ import absolute_import
 from celery import shared_task
+import re
 import requests
 from bs4 import BeautifulSoup
-import re
 from lawmakers.models import Lawmaker, Party
 
 @shared_task
