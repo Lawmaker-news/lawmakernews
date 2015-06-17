@@ -18,6 +18,8 @@ def crawl_all_lawmakers():
 def _crawl_each_lawmaker(url):
     response = requests.get(url)
     table = BeautifulSoup(response.text).find(valign='top', align='left')
+
+    # 이름, 정당, 지역구, 회차 등이 한 문장으로 이어져 있음
     captures = re.search('성 명.{,20}>([가-힣]+).*제(19)대[[가-힣\s]*\((.{,20})\)([가-힣.ㆍ\s]+)', unicode(table), re.DOTALL)
 
     name = captures.group(1)
