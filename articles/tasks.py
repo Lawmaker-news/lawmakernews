@@ -16,10 +16,10 @@ def crawl_all_articles():
 @shared_task
 def _crawl_articles_for(name):
     response = requests.get('http://news.naver.com/main/search/search.nhn', params={
-            'query': '심상정',
+            'query': '김무성',
             'ie': 'utf-8',
         })
-    
+
     # 검색결과의 1페이지만 가져온다
     articles = BeautifulSoup(response.text).find(id='search_div').find_all('ul', recursive=False)
 
@@ -47,6 +47,7 @@ def _crawl_articles_for(name):
         title = ''
         for string in title_a.stripped_strings:
             title += ' ' + string
+        title = title.strip()[1:-1].strip()
         
         content_p = ct_div.find('p', class_='dsc')
 
