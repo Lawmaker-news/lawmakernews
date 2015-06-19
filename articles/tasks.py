@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from celery import shared_task
+import time
 import re
 import requests
 from bs4 import BeautifulSoup
 from lawmakers.models import Lawmaker
+from articles.models import Article
 
 @shared_task
 def crawl_all_articles():
     lawmakers = Lawmaker.objects.all();
     
-    for lawmaker in lawmakers:
-        _crawl_articles_for(lawmaker.name)
+    for lawmaker in lawmakers.iterator():
+        _crawl_articles_for(lawmaker)
+        time.sleep(2)
 
 @shared_task
-def _crawl_articles_for(name):
+def _crawl_articles_for(lawmaker):
     response = requests.get('http://news.naver.com/main/search/search.nhn', params={
-            'query': '김무성',
+            'query': lawmaker.name,
             'ie': 'utf-8',
         })
 
@@ -69,3 +72,10 @@ def _crawl_articles_for(name):
         print(thumbnail_link)
         print(press)
         print('-' * 30)
+
+        _map_articles_lawmakers(title, lawmaker)
+
+        Article(title=title, content=content, origin_link=origin_link, thumbnail_link=thumbnail_link, press=press).save()
+
+def _map_articles_lawmakers(title, lawmaker):
+    pass
