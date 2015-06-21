@@ -16,7 +16,6 @@ def crawl_all_articles():
         _crawl_articles_for(lawmaker)
         time.sleep(2)
 
-@shared_task
 def _crawl_articles_for(lawmaker):
     response = requests.get('http://news.naver.com/main/search/search.nhn', params={
             'query': lawmaker.name,
@@ -73,9 +72,18 @@ def _crawl_articles_for(lawmaker):
         print(press)
         print('-' * 30)
 
-        _map_articles_lawmakers(title, lawmaker)
+        new_article = Article(title=title, content=content, origin_link=origin_link, thumbnail_link=thumbnail_link, press=press)
 
-        Article(title=title, content=content, origin_link=origin_link, thumbnail_link=thumbnail_link, press=press).save()
+        # 국회의원 - 기사 매핑
+        _map_articles_lawmakers(new_article, lawmaker)
 
-def _map_articles_lawmakers(title, lawmaker):
-    pass
+def _map_articles_lawmakers(article, lawmaker):
+    existed_articles = Article.objects.filter(title=article.title)
+    
+    if existed_articles.exist():
+        current_article = existed_articles.first()
+    else:
+        current_article = article
+        current_article.save()
+
+    lawmaker.articles.add(current_article)
