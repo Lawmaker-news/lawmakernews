@@ -20,11 +20,16 @@ from django.contrib import admin
 
 lawmaekers_urls = patterns(
     'lawmakers.views',
+
+    url(r'^$', 'lawmakers', name='lawmakers'),
+    url(r'^parties/$', 'parties', name='parties'),
+    
     url(r'^test_crawl_lawmakers/$', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
 )
 
 articles_urls = patterns(
     'articles.views',
+    
     url(r'^test_crawl_articles/$', 'test_crawl_articles', name='test_crawl_articles'),
 )
 
