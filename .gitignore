@@ -6,3 +6,7 @@
 
 # don't use and uploade sqlite3!
 *.sqlite3
+
+# scss file
+*.css.map
+**/.sass-cache/

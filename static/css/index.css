@@ -1,0 +1,141 @@
+@charset "UTF-8";
+body, html {
+  height: 100%; }
+
+body {
+  overflow: hidden;
+  height: 100%;
+  font-family: "나눔고딕", NanumGothic, "돋움", dotum, sans-serif; }
+
+header {
+  background-color: black;
+  height: 50px;
+  width: 100%; }
+  header .title {
+    font-size: 21px;
+    font-weight: 700;
+    color: white;
+    padding: 10px 0 0 10px;
+    display: block; }
+
+#content {
+  height: 100%; }
+  #content aside {
+    float: left;
+    background-color: #933F3F;
+    height: 100%;
+    width: 200px;
+    position: relative; }
+    #content aside .search-area {
+      position: relative;
+      padding: 15px 4px 11px 4px; }
+      #content aside .search-area .search-input-wrap .search-input {
+        width: 75%;
+        height: 20px; }
+      #content aside .search-area .search-input-wrap .search-btn {
+        height: 23px;
+        background-color: white;
+        border: none; }
+    #content aside .party-list-area {
+      width: 100%;
+      height: auto;
+      position: relative;
+      min-height: 100%;
+      overflow-y: scroll; }
+      #content aside .party-list-area .party-item {
+        margin-top: 3px; }
+        #content aside .party-list-area .party-item .party-item-header {
+          height: 30px;
+          width: 100%;
+          background-color: #F4F0F0;
+          cursor: pointer; }
+          #content aside .party-list-area .party-item .party-item-header .party-name {
+            text-decoration: none;
+            color: black; }
+            #content aside .party-list-area .party-item .party-item-header .party-name span {
+              line-height: 28px;
+              padding-left: 6px; }
+          #content aside .party-list-area .party-item .party-item-header .party-new-count {
+            color: #fa5d5d;
+            font-weight: 800;
+            text-decoration: none; }
+        #content aside .party-list-area .party-item .party-member-list {
+          display: none;
+          margin-bottom: 10px;
+          padding-top: 3px;
+          background-color: #9EFEBC; }
+          #content aside .party-list-area .party-item .party-member-list .party-member {
+            width: 100%;
+            height: 18px;
+            line-height: 17px;
+            padding: 3px 0px 3px 10px;
+            border-bottom: 1px solid white; }
+            #content aside .party-list-area .party-item .party-member-list .party-member a {
+              text-decoration: none;
+              color: black; }
+        #content aside .party-list-area .party-item.on .party-item-header {
+          background-color: #D6F3DF; }
+        #content aside .party-list-area .party-item.on .party-member-list {
+          display: block; }
+  #content section {
+    margin-left: 200px;
+    overflow-y: scroll;
+    height: 100%; }
+    #content section .section-title {
+      padding: 20px 0 3px 10px;
+      font-weight: 700; }
+    #content section .lawmaker-list-area {
+      margin-top: 3px; }
+      #content section .lawmaker-list-area .lawmaker-list {
+        padding: 10px; }
+        #content section .lawmaker-list-area .lawmaker-list .lawmaker-item {
+          background-color: #F4F0F0;
+          margin-bottom: 10px;
+          padding: 10px; }
+          #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header {
+            margin-bottom: 10px; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .lawmaker-rank {
+              font-size: 16px;
+              font-weight: 600; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .lawmaker-name {
+              font-size: 16px;
+              font-weight: 600; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .lawmaker-header-rigth-item {
+              float: right;
+              font-size: 13px; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .lawmaker-header-rigth-item .total-label-title {
+                padding-left: 5px; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .lawmaker-header-rigth-item .member-page-btn {
+                padding-left: 5px; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .up {
+              color: red; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .down {
+              color: blue; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-item-header .new {
+              color: red; }
+          #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .lawmaker-image {
+            float: left;
+            width: 130px; }
+          #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list {
+            margin-left: 130px; }
+            #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list .issue-item {
+              margin-bottom: 5px;
+              border: 1px solid #CECED2;
+              padding: 5px; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list .issue-item .title {
+                overflow: hidden;
+                font-weight: 600;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-break: break-all;
+                width: 100%;
+                display: inline-block; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list .issue-item .issue-origin {
+                font-size: 12px;
+                font-weight: 600; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list .issue-item .bar {
+                font-size: 12px; }
+              #content section .lawmaker-list-area .lawmaker-list .lawmaker-item .issue-list .issue-item .day {
+                font-size: 12px; }
+
+/*# sourceMappingURL=index.css.map */
