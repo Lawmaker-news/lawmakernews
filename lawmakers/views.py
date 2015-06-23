@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.core import serializers
 from django.forms.models import model_to_dict
 import json
 from lawmakers.models import Lawmaker, Party
