@@ -7,6 +7,11 @@
 # don't use and uploade sqlite3!
 *.sqlite3
 
-# scss file
-*.css.map
+# fe module file
+client/node_modules/
+client/dist/
+client/bower_components/
+
 **/.sass-cache/
+
+.idea/

@@ -1,0 +1,20 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Lawmaker-news/lawmakernews",
+  "authors": [
+    "최민호/협업시스템개발팀/NE <minho-choi@nhnent.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "react": "~0.13.3"
+  }
+}

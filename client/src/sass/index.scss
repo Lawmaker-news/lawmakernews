@@ -40,6 +40,7 @@ header {
 		.search-area {
 			position: relative;
 			padding: 15px 4px 11px 4px;
+			height: 10%;
 
 			.search-input-wrap {
 
@@ -57,10 +58,9 @@ header {
 
 		.party-list-area {
 			width: 100%;
-			height: auto;
 			position: relative;
-			min-height: 100%;
-			overflow-y: scroll;
+			height: 90%;
+			overflow-y: auto;
 
 
 			.party-item {
