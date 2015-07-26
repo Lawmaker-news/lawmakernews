@@ -6,12 +6,17 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from lawmakers.models import Lawmaker, Party
+import logging
+from colorlog import ColoredFormatter
+
+
+logger = logging.getLogger('lawmakers')
 
 @shared_task
 def crawl_all_lawmakers():
+    logger.debug('crawl_all_lawmakers start')
     response = requests.get('http://www.rokps.or.kr/profile.asp?code=no19&title=19%B4%EB%C0%C7%BF%F8')
     table = BeautifulSoup(response.text).find(width=550)
-
     for a_tag in table.find_all('a'):
         _crawl_each_lawmaker('http://www.rokps.or.kr/' + a_tag['href'])
 
@@ -28,10 +33,10 @@ def _crawl_each_lawmaker(url):
     local = re.sub('[^가-힣]', '', captures.group(3))
     generation = captures.group(2)
 
-    print(name)
-    print(party.name)
-    print(local)
-    print(generation)
-    print('-' * 30)
+    logger.debug(name)
+    logger.debug(party.name)
+    logger.debug(local)
+    logger.debug(generation)
+    logger.debug('-' * 30)
 
     Lawmaker(name=name, party=party, local=local, generation=generation, is_current=True).save()

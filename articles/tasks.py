@@ -7,6 +7,9 @@ import requests
 from bs4 import BeautifulSoup
 from lawmakers.models import Lawmaker
 from articles.models import Article
+import logging
+
+logger = logging.getLogger('articles')
 
 @shared_task
 def crawl_all_articles():
@@ -65,12 +68,12 @@ def _crawl_articles_for(lawmaker):
         if thumbnail_a:
             thumbnail_link = thumbnail_a.find('img')['src']
 
-        print(title)
-        print(content)
-        print(origin_link)
-        print(thumbnail_link)
-        print(press)
-        print('-' * 30)
+        logger.debug(title)
+        logger.debug(content)
+        logger.debug(origin_link)
+        logger.debug(thumbnail_link)
+        logger.debug(press)
+        logger.debug('-' * 30)
 
         new_article = Article(title=title, content=content, origin_link=origin_link, thumbnail_link=thumbnail_link, press=press)
 
