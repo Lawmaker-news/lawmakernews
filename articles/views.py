@@ -7,3 +7,6 @@ def test_crawl_articles(request):
     crawl_all_articles.delay()
     # _crawl_articles_for.delay(name='haha')
     return render(request, 'temp.html')
+
+def index(request):
+    return render(request, './dist/index.html')
