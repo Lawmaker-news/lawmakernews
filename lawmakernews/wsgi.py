@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """
 WSGI config for lawmakernews project.
 
@@ -11,6 +13,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lawmakernews.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lawmakernews.settings.local")
 
 application = get_wsgi_application()

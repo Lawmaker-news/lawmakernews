@@ -14,6 +14,7 @@ client/bower_components/
 
 **/.sass-cache/
 
+# jetbrain ide settings
 .idea/
 
 # log file

@@ -24,9 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b-2miyooz&hpw&a&6afp9rul7uh1!&0pt0i#3y0h^hsys=h7h-'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -76,21 +73,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'lawmakernews.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lawmakernews_local',
-        'USER': 'nyg',
-        'PASSWORD': '123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -112,65 +94,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'client'),)
 
 STATIC_URL = '/client/'
 
+
 # Redis(message broker) url
 
 BROKER_URL = 'redis://localhost:6379/0'
-
-#Logger settings
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            '()': 'colorlog.ColoredFormatter',
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S",
-            'log_colors': {
-                'DEBUG':    'bold_black',
-                'INFO':     'white',
-                'WARNING':  'yellow',
-                'ERROR':    'red',
-                'CRITICAL': 'bold_red',
-            },
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s',
-        },
-    },
-    'handlers': {
-        'djangofile': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'log/django.log',
-            'formatter': 'verbose'
-        }, 
-       'lawmakersfile': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'log/lawmakers.log',
-            'formatter': 'verbose'
-        },
-
-        'articlesfile': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'log/articles.log',
-            'formatter': 'verbose'
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers':['djangofile'],
-            'propagate': True,
-            'level':'DEBUG',
-        },
-        'articles': {
-            'handlers': ['articlesfile'],
-            'level': 'DEBUG',
-        }, 
-       'lawmakers': {
-            'handlers': ['lawmakersfile'],
-            'level': 'DEBUG',
-        },
-    }
-}
