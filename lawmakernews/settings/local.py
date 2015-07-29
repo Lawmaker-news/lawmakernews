@@ -13,11 +13,11 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lawmakernews_local',
-        'USER': 'local_root',
-        'PASSWORD': '123123123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.environ.get('LOCAL_DB_NAME'),
+        'USER': os.environ.get('LOCAL_DB_USER'),
+        'PASSWORD': os.environ.get('LOCAL_DB_PASSWORD'),
+        'HOST': os.environ.get('LOCAL_DB_HOST'),
+        'PORT': os.environ.get('LOCAL_DB_PORT'),
     }
 }
 
