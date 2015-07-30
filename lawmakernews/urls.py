@@ -30,6 +30,8 @@ lawmaekers_urls = patterns(
 articles_urls = patterns(
     'articles.views',
 
+    url(r'^$', 'articles', name='articles'),
+    
     url(r'^test_crawl_articles/$', 'test_crawl_articles', name='test_crawl_articles'),
 )
 
