@@ -17,27 +17,28 @@ Including another URLconf
 """
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
+from smarturls import surl
 
 lawmaekers_urls = patterns(
     'lawmakers.views',
 
-    url(r'^$', 'lawmakers', name='lawmakers'),
-    url(r'^parties/$', 'parties', name='parties'),
+    surl('/', 'lawmakers', name='lawmakers'),
+    surl('parties/', 'parties', name='parties'),
     
-    url(r'^test_crawl_lawmakers/$', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
+    surl('test_crawl_lawmakers/', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
 )
 
 articles_urls = patterns(
     'articles.views',
 
-    url(r'^$', 'articles', name='articles'),
+    surl('/', 'articles', name='articles'),
     
-    url(r'^test_crawl_articles/$', 'test_crawl_articles', name='test_crawl_articles'),
+    surl('test_crawl_articles/', 'test_crawl_articles', name='test_crawl_articles'),
 )
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^lawmakers/', include(lawmaekers_urls, namespace='lawmakers')),
-    url(r'^articles/', include(articles_urls, namespace='articles')),
-    url(r'^$', 'articles.views.index', name='index'),
+    surl('admin/', include(admin.site.urls)),
+    surl('lawmakers/', include(lawmaekers_urls, namespace='lawmakers')),
+    surl('articles/', include(articles_urls, namespace='articles')),
+    surl('/', 'articles.views.index', name='index'),
 ]
