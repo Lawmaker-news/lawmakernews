@@ -38,7 +38,6 @@ def crawl_all_lawmakers_na():
             break
 
         for item in listArea:
-
             logger.debug(item)
 
         currentPage = currentPage+rowPerPage
