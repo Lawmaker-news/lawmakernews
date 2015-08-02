@@ -7,6 +7,33 @@ from lawmakernews.settings.base import *
 DEBUG = True
 
 
+# Template setting for local enviroments
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [ os.path.join(BASE_DIR, 'client/src/html'), ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'client/src'),)
+
+STATIC_URL = '/client/'
+
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

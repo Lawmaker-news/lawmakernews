@@ -18,6 +18,6 @@ def parties(request):
     return HttpResponse(json.dumps(parties), content_type='application/json')
 
 def test_crawl_lawmakers(request):
-    crawl_all_lawmakers.delay()
+    # crawl_all_lawmakers.delay()
     
     return render(request, 'temp.html')
