@@ -26,6 +26,9 @@ lawmaekers_urls = patterns(
     surl('parties/', 'parties', name='parties'),
     
     surl('test_crawl_lawmakers/', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
+    
+    #for test(amazingguni) 
+    surl('crawl_lawmakers/', 'crawl_lawmakers', name='crawl_lawmakers'),
 )
 
 articles_urls = patterns(

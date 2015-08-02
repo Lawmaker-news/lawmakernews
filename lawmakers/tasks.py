@@ -12,6 +12,48 @@ from colorlog import ColoredFormatter
 
 logger = logging.getLogger('lawmakers')
 
+'''
+crawl lawmakers data from www.assembly.go.kr
+'''
+#default row per page
+rowPerPage = 6
+
+@shared_task
+def crawl_all_lawmakers_na():
+    logger.debug('start')
+
+    currentPage = 1;
+
+    listArea = None
+
+    while(True):
+        payload ={
+                'currentPage':currentPage,
+                'rowPerPage':rowPerPage
+                }
+        logger.debug(payload)
+        response =  requests.post('http://www.assembly.go.kr/assm/memact/congressman/memCond/memCondListAjax.do', data = payload)
+        listArea = BeautifulSoup(response.text).select('.memberna_list > dl')
+        if(not len(listArea)):
+            break
+
+        for item in listArea:
+
+            logger.debug(item)
+
+        currentPage = currentPage+rowPerPage
+
+
+
+'''
+parse each page
+'''
+def parse_per_lawmakers(response):
+    logger.debug('start')
+
+
+
+
 @shared_task
 def crawl_all_lawmakers():
     logger.debug('crawl_all_lawmakers start')
