@@ -8,22 +8,24 @@ from lawmakers.models import Lawmaker, Party
 from lawmakers.tasks import crawl_all_lawmakers, crawl_all_lawmakers_na
 
 def parties(request):
-    print 'parties'
-
     parties = map(lambda party: model_to_dict(party), Party.objects.all())
+    result = {
+        'parties': parties,
+        'totalCount': len(parties),
+    }
     
-    return HttpResponse(json.dumps(parties), content_type='application/json')
+    return HttpResponse(json.dumps(result), content_type='application/json')
 
 def party_lawmakers(request, id):
-    print 'party_lawmakers'
-
     lawmakers = map(lambda lawmaker: model_to_dict(lawmaker, exclude='articles'), Lawmaker.objects.filter(party=id).all())
+    result = {
+        'lawmakers': lawmakers,
+        'totalCount': len(lawmakers)
+    }
 
-    return HttpResponse(json.dumps(lawmakers), content_type='application/json')
+    return HttpResponse(json.dumps(result), content_type='application/json')
 
 def all_party_lawmakers(request, id):
-    print 'all_party_lawmakers'
-    
     return HttpResponse(json.dumps(lawmakers), content_type='application/json')
 
 
