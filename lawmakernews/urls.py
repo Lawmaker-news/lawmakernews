@@ -22,13 +22,18 @@ from smarturls import surl
 lawmaekers_urls = patterns(
     'lawmakers.views',
 
-    surl('/', 'lawmakers', name='lawmakers'),
-    surl('parties/', 'parties', name='parties'),
-    
-    surl('test_crawl_lawmakers/', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
+    surl('/test_crawl_lawmakers/', 'test_crawl_lawmakers', name='test_crawl_lawmakers'),
     
     #for test(amazingguni) 
-    surl('crawl_lawmakers/', 'crawl_lawmakers', name='crawl_lawmakers'),
+    surl('/crawl_lawmakers/', 'crawl_lawmakers', name='crawl_lawmakers'),
+)
+
+parties_urls = patterns(
+    'lawmakers.views',
+
+    surl('/', 'parties', name='parties'),
+    surl('/<int:id>/lawmakers/', 'party_lawmakers', name='party_lawmakers'),
+    surl('/all/lawmakers/', 'all_party_lawmakers', name='all_party_lawmakers'),
 )
 
 articles_urls = patterns(
@@ -36,12 +41,13 @@ articles_urls = patterns(
 
     surl('/', 'articles', name='articles'),
     
-    surl('test_crawl_articles/', 'test_crawl_articles', name='test_crawl_articles'),
+    surl('/test_crawl_articles/', 'test_crawl_articles', name='test_crawl_articles'),
 )
 
 urlpatterns = [
     surl('admin/', include(admin.site.urls)),
+
     surl('lawmakers/', include(lawmaekers_urls, namespace='lawmakers')),
+    surl('parties/', include(parties_urls, namespace='parties')),
     surl('articles/', include(articles_urls, namespace='articles')),
-    surl('/', 'articles.views.index', name='index'),
 ]
